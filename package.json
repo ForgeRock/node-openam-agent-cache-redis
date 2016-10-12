@@ -1,7 +1,7 @@
 {
   "name": "openam-agent-cache-redis",
   "description": "Cache using Redis for the OpenAM Policy Agent for NodeJS",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "Zoltan Tarcsay <tarcsay.zoltan@gmail.com>",
   "repository": {
