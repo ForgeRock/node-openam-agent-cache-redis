@@ -1,6 +1,10 @@
 # openam-agent-cache-redis
 Cache using Redis for the OpenAM Policy Agent for NodeJS
 
+Installation: `npm install openam-agent-cache-redis`
+
+# API Docs
+
 <a name="RedisCache"></a>
 
 ## RedisCache ⇐ <code>Cache</code>
@@ -26,17 +30,19 @@ Cache implementation for redis
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  | Options |
-| [options.url] | <code>string</code> | <code>&quot;http://localhost/11211&quot;</code> | redis URL |
+| [options.url] | <code>string</code> | <code>&quot;redis://localhost/6379&quot;</code> | redis URL |
 | [options.expireAfterSeconds] | <code>number</code> | <code>60</code> | Expiration time in seconds |
 | [options.redis] | <code>\*</code> &#124; <code>undefined</code> |  | Redis options (see  [https://www.npmjs.com/package/redis](https://www.npmjs.com/package/redis)) |
 
 **Example**  
 ```js
 var redisCache = new RedisCache({
-  url: 'cache.example.com:11211',
+  url: 'redis://cache.example.com:6379',
   expireAfterSeconds: 600,
   redis: {
-     retry_strategy:
+     retry_strategy: function (options) {
+         // do stuff
+     }
   }
 });
 ```
@@ -109,5 +115,6 @@ Closes the client connection
 
 ### RedisCache.PREFIX : <code>string</code>
 Default prefix for storing keys
+Value: "node-openam-agent-cache:"
 
 **Kind**: static property of <code>[RedisCache](#RedisCache)</code>  
