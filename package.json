@@ -6,7 +6,7 @@
   "author": "Zoltan Tarcsay <tarcsay.zoltan@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoltantarcsay/node-openam-agent-cache.git"
+    "url": "https://github.com/zoltantarcsay/node-openam-agent-cache-redis.git"
   },
   "scripts": {
     "test": "mocha test/*"
