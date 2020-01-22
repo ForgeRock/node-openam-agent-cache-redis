@@ -1,7 +1,7 @@
 {
   "name": "@forgerock/openam-agent-cache-redis",
   "description": "Cache using Redis for the OpenAM Policy Agent for NodeJS",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/index.js",
   "author": "Zoltan Tarcsay <zoltan.tarcsay@forgerock.com>",
   "repository": {
