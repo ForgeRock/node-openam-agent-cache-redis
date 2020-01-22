@@ -1,4 +1,4 @@
-var RedisCache = require('../index').RedisCache,
+var RedisCache = require('../dist/index').RedisCache,
     assert = require('assert');
 
 describe('RedisCache', function () {
@@ -6,7 +6,8 @@ describe('RedisCache', function () {
 
     beforeEach(function () {
         redisCache = new RedisCache({
-            url: process.env.REDIS_URL || 'redis://localhost:32771',
+            port: process.env.REDIS_PORT || '6379',
+            host: process.env.REDIS_HOST || 'localhost',
             expireAfterSeconds: 1
         });
     });
@@ -34,11 +35,12 @@ describe('RedisCache', function () {
                     });
                 })
                 .then(function () {
-                    return redisCache.get('foo');
+                  try {
+                      redisCache.get('foo');
+                  } catch (err) {
+                      assert.equal(err.message, 'RedisCache: entry not found in cache');
+                  }
                 })
-                .then(function (res) {
-                    assert(res === null);
-                });
         });
 
 
@@ -64,11 +66,12 @@ describe('RedisCache', function () {
                     return redisCache.remove('foo');
                 })
                 .then(function () {
-                    return redisCache.get('foo');
+                  try {
+                      redisCache.get('foo');
+                  } catch (err) {
+                      assert.equal(err.message, 'RedisCache: entry not found in cache');
+                  }
                 })
-                .then(function (res) {
-                    assert(res === null);
-                });
         });
     });
 

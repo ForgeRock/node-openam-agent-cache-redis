@@ -1,24 +1,32 @@
 {
   "name": "@forgerock/openam-agent-cache-redis",
   "description": "Cache using Redis for the OpenAM Policy Agent for NodeJS",
-  "version": "2.0.0",
-  "main": "index.js",
+  "version": "3.0.0",
+  "main": "dist/index.js",
   "author": "Zoltan Tarcsay <zoltan.tarcsay@forgerock.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/ForgeRock/node-openam-agent-cache-redis.git"
   },
   "scripts": {
+    "build": "tsc",
+    "lint": "tslint --format stylish --project tsconfig.json --config tslint.json",
+    "prebuild": "rm -rf dist",
+    "prepublish": "npm run build",
     "test": "mocha test/*"
   },
   "license": "MIT",
   "dependencies": {
-    "@forgerock/openam-agent-cache": "^2.0.0",
-    "bluebird": "^3.5.0",
-    "redis": "^2.7.1",
-    "util": "^0.10.3"
+    "@forgerock/openam-agent": "^5.0.1",
+    "redis": "^2.8.0",
+    "util-promisifyall": "^1.0.6"
   },
   "devDependencies": {
-    "mocha": "^3.4.2"
+    "@types/node": "^13.1.8",
+    "mocha": "^3.4.2",
+    "tslint": "^6.0.0",
+    "tslint-consistent-codestyle": "^1.16.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.7.5"
   }
 }
